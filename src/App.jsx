@@ -13,8 +13,14 @@ function App() {
     console.log("Quiz started");
   };
 
-  const handleQuizSubmit = (answers) => {
-    console.log("Submitted answers:", answers);
+  const handleQuizSubmit = async(submittedAnswers) => {
+    try {
+      const analysis = await generateIkigaiAnalysis(submittedAnswers);
+      console.log("Ikigai Analysis:", analysis);
+    }
+    catch (error){
+      console.error("Error analyzing responses:", error);
+    }
   };
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 to-purple-50 p-4">

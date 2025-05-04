@@ -9,7 +9,7 @@ if (!apiKey){
 const genAI = new GoogleGenerativeAI(apiKey);
 const model = genAI.getGenerativeModel({model: 'gemini-2.0-flash'});
 
-const generativeIkigaiAnalysis = async (answers) =>{
+const generateIkigaiAnalysis = async (answers) =>{
     try {
         const prompt = `Analyze these Ikigai responses and return a JSON object:\n${JSON.stringify(answers, null, 2)}`;
         const result = await model.generateContent({
@@ -28,4 +28,4 @@ const generativeIkigaiAnalysis = async (answers) =>{
     }
 }
 
-export { generativeIkigaiAnalysis };
+export { generateIkigaiAnalysis };
