@@ -1,4 +1,4 @@
-import { AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
 const questions = [
@@ -85,22 +85,24 @@ const QuestionForm = ({ onSubmit }) => {
   const progress = ((currentQuestion + 1) / questions.length) * 100;
 
   return (
-    <div>
-      <div>
-        <div>
+    <div className="max-w-2xl mx-auto">
+      <div className="mb-8">
+        <div className="h-2 bg-gray-200 rounded-full">
           <motion.div
+            className="h-full bg-gradient-to-r from-pink-500 to-purple-500 rounded-full"
             initial={{ width: 0 }}
             animate={{ width: `${progress}%` }}
             transition={{ duration: 0.3 }}
           />
         </div>
-        <p>
+        <p className="text-right text-sm text-gray-600 mt-2">
           Question {currentQuestion + 1} of {questions.length}
         </p>
       </div>
 
       <AnimatePresence mode="wait">
         <motion.div
+          className="bg-white rounded-lg shadow-lg p-6"
           key={currentQuestion}
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -108,6 +110,7 @@ const QuestionForm = ({ onSubmit }) => {
           transition={{ duration: 0.3 }}
         >
           <span
+            className="inline-block px-3 py-1 rounded-full text-sm font-medium mb-4"
             style={{
               backgroundColor: questions[currentQuestion].category.includes(
                 "Passion"
@@ -131,20 +134,39 @@ const QuestionForm = ({ onSubmit }) => {
             {questions[currentQuestion].category}
           </span>
 
-          <h2>{questions[currentQuestion].text}</h2>
+          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+            {questions[currentQuestion].text}
+          </h2>
 
           <textarea
+            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
             value={currentAnswer}
             onChange={(e) => setCurrentAnswer(e.target.value)}
             placeholder={questions[currentQuestion].placeholder}
             rows={4}
             maxLength={200}
           />
-          <div>
-            <button onClick={handlePrevious} disabled={currentQuestion === 0}>
+          <div className="flex justify-between mt-6">
+            <button
+              onClick={handlePrevious}
+              disabled={currentQuestion === 0}
+              className={`px-6 py-2 rounded-full ${
+                currentQuestion === 0
+                  ? "bg-gray-100 text-gray-400"
+                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+              }`}
+            >
               Previous
             </button>
-            <button onClick={handleNext} disabled={!currentAnswer.trim()}>
+            <button
+              onClick={handleNext}
+              disabled={!currentAnswer.trim()}
+              className={`px-6 py-2 rounded-full ${
+                currentAnswer.trim()
+                  ? "bg-gradient-to-r from-pink-500 to-purple-500 text-white hover:shadow-lg"
+                  : "bg-gray-100 text-gray-400"
+              }`}
+              >
               {currentQuestion === questions.length - 1 ? "Submit" : "Next"}
             </button>
           </div>
