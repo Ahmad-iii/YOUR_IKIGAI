@@ -4,7 +4,10 @@ const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
 
 if (!apiKey) {
   throw new Error(
-    "Jani Gemini API key is not set. Please set the VITE_GEMINI_API_KEY environment variable."
+    "Gemini API key is not set. To fix this:\n" +
+    "1. Make sure your .env file is in the project root directory (not in src/)\n" +
+    "2. Your .env file should contain: VITE_GEMINI_API_KEY=your_api_key_here\n" +
+    "3. Restart your development server after making these changes"
   );
 }
 

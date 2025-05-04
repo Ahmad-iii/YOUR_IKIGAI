@@ -2,6 +2,7 @@ import { useState } from "react";
 import LandingPage from "./components/LandingPage";
 import QuestionForm from "./components/QuestionForm";
 import ErrorBoundary from "./components/ErrorBoundary"; 
+import ResultsPage from "./components/ResultsPage";
 import { generateIkigaiAnalysis } from "./utils/gemeni";
 import "./index.css";
 
