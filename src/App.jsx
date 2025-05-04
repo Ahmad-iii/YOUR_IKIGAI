@@ -1,16 +1,21 @@
+import { useState } from 'react'
 import LandingPage from './components/LandingPage'
+import './index.css'
 
 function App() {
+  const [currentStep, setCurrentStep] = useState('landing')
+
   const startQuiz = () => {
-    console.log('Start button clicked')
+    setCurrentStep('questions')
+    console.log('Quiz started')
   }
 
   return (
-    <div className="bg-gradient-to-br from-pink-50 to-purple-50 p-4">
-      
-        <LandingPage onStart={startQuiz} />
+    <div className="">
+      {currentStep === 'landing' && <LandingPage onStart={startQuiz} />}
+      {currentStep === 'questions' && <div>YE TU Question ki jagah hai</div>}
     </div>
   )
 }
 
-export default App;
+export default App
