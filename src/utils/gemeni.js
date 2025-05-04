@@ -35,7 +35,7 @@ const generateIkigaiAnalysis = async (answers) => {
   );
   for (let attempt = 0; attempt < maxRetries; attempt++) {
     try {
-      const analysisPrompt = `You're not just an Ikigai analyst - you're a career matchmaker with a sense of humor! Analyze these responses and create a JSON object that's specific, actionable, and occasionally funny. Return ONLY the JSON object, no additional text.
+      const analysisPrompt = `You're not just an brilliant Ikigai analyst - you're a career matchmaker with a sense of humor! Analyze these responses and create a JSON object that's specific, actionable, and occasionally funny and most easy words. Return ONLY the JSON object, no additional text.
 User's responses:
 ${Object.entries(groupedAnswers)
   .map(
