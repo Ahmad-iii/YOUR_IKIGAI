@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import LandingPage from './components/LandingPage'
+import QuestionForm from './components/QuestionForm'
 import './index.css'
 
 function App() {
@@ -10,6 +11,9 @@ function App() {
     console.log('Quiz started')
   }
 
+  const handleQuizSubmit = (answers) => {
+    console.log("Submitted answers:", answers)
+  }
   return (
     <div className="">
       {currentStep === 'landing' && <LandingPage onStart={startQuiz} />}
